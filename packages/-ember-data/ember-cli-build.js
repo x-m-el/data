@@ -55,7 +55,7 @@ module.exports = function (defaults) {
       plugins: [...require('@ember-data/private-build-infra/src/debug-macros')(null, isProd, config)],
     },
     'ember-cli-babel': {
-      throwUnlessParallelizable: true,
+      throwUnlessParallelizable: false,
       includeExternalHelpers: true,
     },
     'ember-cli-terser': terserSettings,

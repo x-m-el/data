@@ -31,7 +31,7 @@ module.exports = function rollupPrivateModule(tree, options) {
     disableDebugTooling: false,
     disableDecoratorTransforms: false,
 
-    throwUnlessParallelizable: true,
+    throwUnlessParallelizable: false,
 
     // consuming app will take care of this if needed,
     // we don't need to also include
