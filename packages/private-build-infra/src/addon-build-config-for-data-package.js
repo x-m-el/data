@@ -13,14 +13,15 @@ function isProductionEnv() {
   return isProd && !isTest;
 }
 
-function addonBuildConfigForDataPackage(PackageName) {
+function addonBuildConfigForDataPackage(Package) {
   return {
-    name: PackageName,
+    name: Package.name,
 
     options: {
       '@embroider/macros': {
         setOwnConfig: {
           includeDataAdapterInProduction: false,
+          version: Package.version,
         },
       },
     },
@@ -28,7 +29,7 @@ function addonBuildConfigForDataPackage(PackageName) {
     init() {
       this._super.init && this._super.init.apply(this, arguments);
       this._prodLikeWarning();
-      this.debugTree = BroccoliDebug.buildDebugCallback(`ember-data:${PackageName}`);
+      this.debugTree = BroccoliDebug.buildDebugCallback(`ember-data:${Package.name}`);
       this.options = this.options || {};
     },
 
@@ -145,6 +146,13 @@ function addonBuildConfigForDataPackage(PackageName) {
 
     included() {
       this._super.included.apply(this, arguments);
+      // prevent consumers from overriding this.
+      this.options['@embroider/macros'].setOwnConfig.version = Package.version;
+
+      // copy into config
+      const app = this._findHost();
+      const includeDebugInProduction = app?.options?.emberData?.includeDataAdapterInProduction;
+      this.options['@embroider/macros'].setOwnConfig.includeDataAdapterInProduction = includeDebugInProduction;
 
       this._setupBabelOptions();
     },
@@ -183,7 +191,7 @@ function addonBuildConfigForDataPackage(PackageName) {
       let emberVersion = checker.for('ember-source');
 
       let privateTree = rollupPrivateModule(tree, {
-        packageName: PackageName,
+        packageName: Package.name,
         babelCompiler: babel,
         babelOptions: this.options.babel,
         emberVersion: emberVersion,
@@ -196,7 +204,7 @@ function addonBuildConfigForDataPackage(PackageName) {
       let withoutPrivate = new Funnel(tree, {
         exclude: ['-private', isProductionEnv() ? '-debug' : false].filter(Boolean),
 
-        destDir: PackageName,
+        destDir: Package.name,
       });
 
       // use the default options
