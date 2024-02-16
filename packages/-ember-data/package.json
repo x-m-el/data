@@ -64,12 +64,12 @@
     "@embroider/macros": "^1.13.4",
     "@warp-drive/core-types": "workspace:0.0.0-alpha.3",
     "broccoli-merge-trees": "^4.2.0",
-    "ember-auto-import": "^2.7.0",
+    "ember-auto-import": "^2.7.2",
     "ember-cli-babel": "^8.2.0",
     "ember-inflector": "^4.0.2",
     "typescript": "^5.3.3",
     "pnpm-sync-dependencies-meta-injected": "0.0.10",
-    "webpack": "^5.89.0"
+    "webpack": "^5.90.1"
   },
   "dependenciesMeta": {
     "@ember-data/adapter": {

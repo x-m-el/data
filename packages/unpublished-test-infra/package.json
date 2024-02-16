@@ -66,7 +66,7 @@
     "@warp-drive/diagnostic": "workspace:0.0.0-alpha.3",
     "broccoli-merge-trees": "^4.2.0",
     "chalk": "^4.1.2",
-    "ember-auto-import": "^2.7.0",
+    "ember-auto-import": "^2.7.2",
     "ember-cli-babel": "^8.2.0",
     "ember-cli-blueprint-test-helpers": "^0.19.2",
     "ember-get-config": "^2.1.1",
@@ -75,7 +75,7 @@
     "semver": "^7.5.4",
     "testem": "^3.11.0",
     "typescript": "~5.3.3",
-    "webpack": "^5.89.0"
+    "webpack": "^5.90.1"
   },
   "dependenciesMeta": {
     "@ember-data/private-build-infra": {
@@ -108,7 +108,7 @@
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@types/semver": "^7.5.6",
-    "ember-cli": "~5.4.1",
+    "ember-cli": "~5.6.0",
     "ember-cli-dependency-checker": "^3.3.2",
     "ember-cli-htmlbars": "^6.3.0",
     "ember-cli-inject-live-reload": "^2.1.0",
@@ -120,7 +120,7 @@
     "ember-resolver": "^11.0.1",
     "ember-source": "~5.4.0",
     "loader.js": "^4.7.0",
-    "webpack": "^5.89.0"
+    "webpack": "^5.90.1"
   },
   "engines": {
     "node": ">= 20.11.0"
